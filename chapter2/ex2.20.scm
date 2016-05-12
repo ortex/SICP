@@ -1,0 +1,10 @@
+(define (same-parity . numbers)
+  (define (same first-odd items)
+    (cond ((null? items) (list))
+          ((= (remainder (car items) 2) first-odd)
+            (cons (car items) (same first-odd (cdr items))))
+          (else (same first-odd (cdr items)))))
+  (same (remainder (car numbers) 2) numbers))
+
+(same-parity 1 2 3 4 5 6 7) ; (1 3 5 7)
+(same-parity 2 3 4 5 6 7) ; (2 4 6)
