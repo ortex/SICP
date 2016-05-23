@@ -1,9 +1,6 @@
 (define (deriv exp var)
-  (display "\nexp: ")
-  (display exp)
   (cond ((number? exp) 0)
         ((variable? exp)
-          (display "\n is variable: ") (display exp)
           (if (same-variable? exp var) 1 0))
         ((sum? exp)
           (make-sum (deriv (addend exp) var)
@@ -38,7 +35,6 @@
         (else (list '+ a1 a2))))
 
 (define (make-product m1 m2)
-  (display "\nmake-product: ") (display m1) (display " ") (display m2)
   (cond ((or (=number? m1 0) (=number? m2 0)) 0)
         ((=number? m1 1) m2)
         ((=number? m2 1) m1)
@@ -72,3 +68,22 @@
         (else (list '** b e))))
 
 (deriv '(** x 3) 'x) ; (* 3 (** x 2))
+
+; 2.57
+
+(define (not-number? x) (not (number? x)))
+
+(define (make-sum-args items)
+  (if (null? (cdr items))
+      (car items)
+      (cons '+ items)))
+
+(define (make-sum . items)
+  (let ((vars (filter not-number? items))
+        (const (accumulate + 0 (filter number? items))))
+    (cond ((null? vars) const)
+          ((= 0 const) (make-sum-args vars))
+          (else (make-sum-args (cons const vars))))))
+
+(define (addend s) (cadr s))
+(define (augend s) (make-sum-args (cddr s)))
