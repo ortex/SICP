@@ -68,22 +68,3 @@
         (else (list '** b e))))
 
 (deriv '(** x 3) 'x) ; (* 3 (** x 2))
-
-; 2.57
-
-(define (not-number? x) (not (number? x)))
-
-(define (make-sum-args items)
-  (if (null? (cdr items))
-      (car items)
-      (cons '+ items)))
-
-(define (make-sum . items)
-  (let ((vars (filter not-number? items))
-        (const (accumulate + 0 (filter number? items))))
-    (cond ((null? vars) const)
-          ((= 0 const) (make-sum-args vars))
-          (else (make-sum-args (cons const vars))))))
-
-(define (addend s) (cadr s))
-(define (augend s) (make-sum-args (cddr s)))
