@@ -20,10 +20,10 @@
 
 ; 2.54
 
-(define (equals x y)
+(define (equals? x y)
   (cond ((and (null? x) (null? y)) true)
-        ((and (number? x) (number? y)) (= a b))
-        ((and (symbol? x) (symbol? y)) (eq? a b))
+        ((and (number? x) (number? y)) (= x y))
+        ((and (symbol? x) (symbol? y)) (eq? x y))
         ((and (pair? x) (pair? y))
             (and (equals? (car x) (car y))
                  (equals? (cdr x) (cdr y))))
