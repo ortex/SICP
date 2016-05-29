@@ -114,3 +114,7 @@
 
 (encode rock-message
         (generate-huffman-tree rock-alphabet))
+
+; 2.71
+для самого частого символа потербуется 1 бит
+для самого редкого (n - 1) бит
