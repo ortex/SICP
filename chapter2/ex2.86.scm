@@ -103,7 +103,7 @@
 
 (put 'cos '(rational) (lambda (x) (attach-tag 'rational (cos (/ (numer x) (denom x))))))
 (put 'sin '(rational) (lambda (x) (attach-tag 'rational (sin (/ (numer x) (denom x))))))
-(put 'sqrt '(rational) (lambda (x) (attach-tag 'rational (mul (sqrt (numer x) (denom x))))))
+(put 'sqrt '(rational) (lambda (x) (attach-tag 'rational (div (sqrt (numer x)) (sqrt (denom x))))))
 (put 'square '(rational) (lambda (x) (attach-tag 'rational (mul x x))))
 (put 'atan '(rational rational) (lambda (x) (attach-tag 'rational (atan (/ (numer x) (denom x))))))
 
