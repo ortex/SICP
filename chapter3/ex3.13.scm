@@ -6,4 +6,4 @@
 
 (define z (make-cycle '('a 'b 'c)))
 
-(last-pair z) ; infinity loop
+; (last-pair z) ; infinity loop
