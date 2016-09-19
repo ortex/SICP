@@ -1,3 +1,5 @@
+(load "chapter3/ex3.33.scm")
+
 (define (squarer a b)
   (define (process-new-value)
     (if (has-value? b)
