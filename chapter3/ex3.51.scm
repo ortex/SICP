@@ -1,3 +1,5 @@
+(load "chapter3/streams.scm")
+
 (define (show x)
   (display x)
   x)

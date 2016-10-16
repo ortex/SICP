@@ -1,9 +1,4 @@
-(define (stream-enumerate-interval low high)
-  (if (> low high)
-      the-empty-stream
-      (cons-stream
-        low
-        (stream-enumerate-interval (+ low 1) high))))
+(load "chapter3/streams.scm")
 
 (define (display-stream s)
   (stream-for-each display-line s))

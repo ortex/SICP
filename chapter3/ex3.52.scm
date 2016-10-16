@@ -1,3 +1,5 @@
+(load "chapter3/streams.scm")
+
 (define sum 0)
 
 (define (accum x)
