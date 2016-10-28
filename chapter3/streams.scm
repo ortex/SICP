@@ -25,7 +25,7 @@
 (define (div-streams s1 s2)
   (stream-map / s1 s2))
 
-(define (show-first-n s n)
+(define (display-first-n s n)
   (stream-for-each
     (lambda (x) (begin
       (display (stream-ref s x))
