@@ -33,5 +33,13 @@
     (stream-enumerate-interval 0 n))
   'ok)
 
+(define (displayln-first-n s n)
+  (stream-for-each
+    (lambda (x) (begin
+      (display (stream-ref s x))
+      (display "\n")))
+    (stream-enumerate-interval 0 n))
+  'ok)
+
 (define (scale-stream stream factor)
   (stream-map (lambda (x) (* x factor)) stream))
