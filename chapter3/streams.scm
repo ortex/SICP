@@ -46,3 +46,7 @@
 
 (define (scale-stream stream factor)
   (stream-map (lambda (x) (* x factor)) stream))
+
+(define (random-stream n)
+  (cons-stream (- (random (* 2 n)) n) (random-stream n)))
+    
