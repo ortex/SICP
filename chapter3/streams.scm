@@ -13,6 +13,9 @@
 (define zero-stream
   (cons-stream 0 zero-stream))
 
+(define ones
+  (cons-stream 1 ones))
+
 (define (add-streams s1 s2)
   (stream-map + s1 s2))
 
