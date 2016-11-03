@@ -1,0 +1,11 @@
+(define (RLC R L C dt)
+  (define (f Uc0 iL0)
+    (define Uc (integral (delay dUc) Uc0 dt))
+    (define Lj (integral (delay diL) iL0 dt))
+    (define dUc (scale-stream Lj (/ -1 C)))
+    (define diL (add-streams (scale-stream Lj (/ (- R) L))
+                             (scale-stream Uc (/ 1 L))))
+    (cons Uc Lj))
+  f)
+
+((RLC 1 0.2 1 0.1) 0 10)
