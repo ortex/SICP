@@ -7,7 +7,7 @@
 
 ;; 3.78
   (solve-2nd (lambda (dy y) (add-streams (scale-stream dy a)
-                                         (scale-stream ddy b)))
+                                         (scale-stream y b)))
              dt
              y0
              dy0)
