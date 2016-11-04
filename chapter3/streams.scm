@@ -50,3 +50,9 @@
 (define (random-stream n)
   (cons-stream (- (random (* 2 n)) n) (random-stream n)))
     
+(define (make-stream . args)
+  (define (make-stream-from-list args)
+    (if (null? args)
+        '()
+        (cons-stream (car args) (make-stream-from-list (cdr args)))))
+  (make-stream-from-list args))
